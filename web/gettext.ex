@@ -1,11 +1,11 @@
-defmodule SignMeIn.Gettext do
+defmodule MunchHours.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 
   By using [Gettext](https://hexdocs.pm/gettext),
   your module gains a set of macros for translations, for example:
 
-      import SignMeIn.Gettext
+      import MunchHours.Gettext
 
       # Simple translation
       gettext "Here is the string to translate"
@@ -20,5 +20,5 @@ defmodule SignMeIn.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :sign_me_in
+  use Gettext, otp_app: :munch_hours
 end

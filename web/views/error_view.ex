@@ -1,5 +1,5 @@
-defmodule SignMeIn.ErrorView do
-  use SignMeIn.Web, :view
+defmodule MunchHours.ErrorView do
+  use MunchHours.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

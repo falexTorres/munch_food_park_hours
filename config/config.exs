@@ -6,15 +6,15 @@
 use Mix.Config
 
 # General application configuration
-config :sign_me_in,
-  ecto_repos: [SignMeIn.Repo]
+config :munch_hours,
+  ecto_repos: [MunchHours.Repo]
 
 # Configures the endpoint
-config :sign_me_in, SignMeIn.Endpoint,
+config :munch_hours, MunchHours.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "8skL2928fmkG0hhn0vTN+LIRonbqHXShZrbX/pSLpqOlj5XA5dyfcEsoNYfgxl7y",
-  render_errors: [view: SignMeIn.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: SignMeIn.PubSub,
+  render_errors: [view: MunchHours.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: MunchHours.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

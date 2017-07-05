@@ -1,6 +1,6 @@
-defmodule SignMeIn.Session do
-    alias SignMeIn.User
-    alias SignMeIn.Repo
+defmodule MunchHours.Session do
+    alias MunchHours.User
+    alias MunchHours.Repo
 
     def login(params, repo) do
         user = repo.get_by(User, email: String.downcase(params["email"]))

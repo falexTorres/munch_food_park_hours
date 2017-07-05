@@ -1,5 +1,5 @@
-defmodule SignMeIn.Router do
-  use SignMeIn.Web, :router
+defmodule MunchHours.Router do
+  use MunchHours.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -14,28 +14,29 @@ defmodule SignMeIn.Router do
   end
 
   pipeline :authenticated do
-    plug SignMeIn.Plug.Authenticate
+    plug MunchHours.Plug.Authenticate
   end
 
-  scope "/admin", SignMeIn do
+  scope "/users", MunchHours do
     pipe_through [:browser, :authenticated]
-    get "/", PageController, :index
+    get "/edit", TruckController, :edit
+    post "/edit", TruckController, :update
+    resources "/changecredentials", RegistrationController, only: [:new, :create]
   end
 
-  scope "/", SignMeIn do
+  scope "/", MunchHours do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete
-    resources "/registrations", RegistrationController, only: [:new, :create]
   end
 
 
 
   # Other scopes may use custom stacks.
-  # scope "/api", SignMeIn do
+  # scope "/api", MunchHours do
   #   pipe_through :api
   # end
 end

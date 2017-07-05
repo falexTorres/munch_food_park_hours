@@ -1,4 +1,4 @@
-defmodule SignMeIn.ErrorHelpers do
+defmodule MunchHours.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -32,9 +32,9 @@ defmodule SignMeIn.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(SignMeIn.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(MunchHours.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(SignMeIn.Gettext, "errors", msg, opts)
+      Gettext.dgettext(MunchHours.Gettext, "errors", msg, opts)
     end
   end
 end

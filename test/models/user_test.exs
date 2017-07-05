@@ -1,7 +1,7 @@
-defmodule SignMeIn.UserTest do
-  use SignMeIn.ModelCase
+defmodule MunchHours.UserTest do
+  use MunchHours.ModelCase
 
-  alias SignMeIn.User
+  alias MunchHours.User
 
   @valid_attrs %{crypted_password: "some content", email: "some content"}
   @invalid_attrs %{}

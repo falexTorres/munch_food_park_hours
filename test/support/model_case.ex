@@ -1,4 +1,4 @@
-defmodule SignMeIn.ModelCase do
+defmodule MunchHours.ModelCase do
   @moduledoc """
   This module defines the test case to be used by
   model tests.
@@ -16,20 +16,20 @@ defmodule SignMeIn.ModelCase do
 
   using do
     quote do
-      alias SignMeIn.Repo
+      alias MunchHours.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import SignMeIn.ModelCase
+      import MunchHours.ModelCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(SignMeIn.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MunchHours.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(SignMeIn.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(MunchHours.Repo, {:shared, self()})
     end
 
     :ok
@@ -59,7 +59,7 @@ defmodule SignMeIn.ModelCase do
   """
   def errors_on(struct, data) do
     struct.__struct__.changeset(struct, data)
-    |> Ecto.Changeset.traverse_errors(&SignMeIn.ErrorHelpers.translate_error/1)
+    |> Ecto.Changeset.traverse_errors(&MunchHours.ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
   end
 end

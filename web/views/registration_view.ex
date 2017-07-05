@@ -1,3 +1,3 @@
-defmodule SignMeIn.RegistrationView do
-    use SignMeIn.Web, :view
+defmodule MunchHours.RegistrationView do
+    use MunchHours.Web, :view
 end

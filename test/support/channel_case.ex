@@ -1,4 +1,4 @@
-defmodule SignMeIn.ChannelCase do
+defmodule MunchHours.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,22 +20,22 @@ defmodule SignMeIn.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias SignMeIn.Repo
+      alias MunchHours.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
 
       # The default endpoint for testing
-      @endpoint SignMeIn.Endpoint
+      @endpoint MunchHours.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(SignMeIn.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MunchHours.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(SignMeIn.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(MunchHours.Repo, {:shared, self()})
     end
 
     :ok

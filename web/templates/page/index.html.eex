@@ -1,36 +1,109 @@
-<div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}", name: "Phoenix!" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+<style>
+  b:hover {
+    cursor: pointer;
+    color: red;
+  }
+
+  b {
+    margin-left: 0.75vw;
+    margin-right: 0.75vw;
+  }
+
+  .active {
+    color: black;
+  }
+
+  .grid {
+    height: 50.5vh;
+    width: 33.33vw;
+    border: solid;
+    border-color: black;
+  }
+
+  h6 {
+    color: black;
+    font-size: 24px;
+  }
+</style>
+<div class="container-fluid">
+  <div class="row text-center">
+      <%= for truck <- all_trucks do %>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 grid">
+          <h3 style="color: white;"><%= truck.truck_name %></h3>
+          <div class="row" style="margin-bottom: 1vh; margin-top: 1vh;">
+            <img src='<%= "/images/" <> truck_id(truck.truck_name) <> ".png" %>' class="img-fluid" height=150 width=250>
+          </div>
+          <span id='<%= truck_id(truck.truck_name) %>' style="color: white;">
+            <b class="Sun" onclick="showHours(this);">S</b> 
+            <b class="Mon" onclick="showHours(this);">M</b> 
+            <b class="Tue" onclick="showHours(this);">T</b> 
+            <b class="Wed" onclick="showHours(this);">W</b> 
+            <b class="Thu" onclick="showHours(this);">T</b> 
+            <b class="Fri" onclick="showHours(this);">F</b> 
+            <b class="Sat" onclick="showHours(this);">S</b>
+          </span>
+          <div class="row">
+            <h6 id='<%= truck_id(truck.truck_name) <> "Sun" %>' style="display: none;"><%= raw(truck.sunday_time) %></h6>
+            <h6 id='<%= truck_id(truck.truck_name) <> "Mon" %>' style="display: none;"><%= raw(truck.monday_time) %></h6>
+            <h6 id='<%= truck_id(truck.truck_name) <> "Tue" %>' style="display: none;"><%= raw(truck.tuesday_time) %></h6>
+            <h6 id='<%= truck_id(truck.truck_name) <> "Wed" %>' style="display: none;"><%= raw(truck.wednesday_time) %></h6>
+            <h6 id='<%= truck_id(truck.truck_name) <> "Thu" %>' style="display: none;"><%= raw(truck.thursday_time) %></h6>
+            <h6 id='<%= truck_id(truck.truck_name) <> "Fri" %>' style="display: none;"><%= raw(truck.friday_time) %></h6>
+            <h6 id='<%= truck_id(truck.truck_name) <> "Sat" %>' style="display: none;"><%= raw(truck.saturday_time) %></h6>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-<div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
-  </div>
+<script>
+  function initHours() {
+    var today = (new Date()).toString().split(" ")[0];
+    
+    // activate day icons
+    var day_icons = document.querySelectorAll("." + today);
+    for (var i = 0; i < day_icons.length; i++) {
+      day_icons[i].classList.add("active");
+    }
 
-  <div class="col-lg-6">
-    <h4>Help</h4>
-    <ul>
-      <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
-      </li>
-      <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
-      </li>
-    </ul>
-  </div>
-</div>
+    // show hours of operation for today
+    showHoursOfOperationAllTrucks(today);
+  };
+
+  function showHoursOfOperationAllTrucks(today) {
+    var hrs = document.querySelectorAll('div > h6');
+    for (var i = 0; i < hrs.length; i++) {
+      if (hrs[i].id.indexOf(today) > -1) {
+        hrs[i].style.display = "block";
+      }
+    }
+  };
+
+  function hideAllHours(truck) {
+    var hrs = document.querySelectorAll('div > h6');
+    for (var i = 0; i < hrs.length; i++) {
+      if (hrs[i].id.indexOf(truck) > -1) {
+        hrs[i].style.display = "none";
+      }
+    }
+  };
+
+  function showHours(clicked_ele) {
+    var day = clicked_ele.className;
+    if (day.indexOf('active') > -1) return;
+
+    var truck = clicked_ele.parentElement.id;
+    var hrs = document.querySelector('#' + truck + day);
+
+    // switch active b tag
+    document.querySelector('#' + truck + ' > .active').classList.remove('active');
+    clicked_ele.classList.add('active');
+
+    // show truck hours
+    hideAllHours(truck);
+    hrs.style.display = "block";
+  };
+
+  initHours();
+</script>

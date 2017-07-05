@@ -1,4 +1,4 @@
-# SignMeIn
+# MunchHours
 
 To start your Phoenix app:
 

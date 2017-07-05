@@ -1,12 +1,12 @@
-defmodule SignMeIn.Web do
+defmodule MunchHours.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use SignMeIn.Web, :controller
-      use SignMeIn.Web, :view
+      use MunchHours.Web, :controller
+      use MunchHours.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -30,12 +30,14 @@ defmodule SignMeIn.Web do
     quote do
       use Phoenix.Controller
 
-      alias SignMeIn.Repo
+      alias MunchHours.Repo
       import Ecto
       import Ecto.Query
 
-      import SignMeIn.Router.Helpers
-      import SignMeIn.Gettext
+      import MunchHours.Router.Helpers
+      import MunchHours.Gettext
+
+      import MunchHours.Session, only: [current_user: 1]
     end
   end
 
@@ -49,11 +51,11 @@ defmodule SignMeIn.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import SignMeIn.Router.Helpers
-      import SignMeIn.ErrorHelpers
-      import SignMeIn.Gettext
+      import MunchHours.Router.Helpers
+      import MunchHours.ErrorHelpers
+      import MunchHours.Gettext
 
-      import SignMeIn.Session, only: [current_user: 1, logged_in?: 1]
+      import MunchHours.Session, only: [current_user: 1, logged_in?: 1]
     end
   end
 
@@ -67,10 +69,10 @@ defmodule SignMeIn.Web do
     quote do
       use Phoenix.Channel
 
-      alias SignMeIn.Repo
+      alias MunchHours.Repo
       import Ecto
       import Ecto.Query
-      import SignMeIn.Gettext
+      import MunchHours.Gettext
     end
   end
 

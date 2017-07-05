@@ -4,10 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Hello SignMeIn!</title>
+    <meta name="description" content="Ever wonder when your favorite Münch Food Park truck will be open? Now you don't have to! Check this page for regularly updated">
+    <title>Münch- Hours of Operation</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
@@ -16,27 +14,38 @@
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+            <li><a href="http://www.ntcconsulting.info">Need Help?</a></li>
           </ul>
         </nav>
         <span class="logo"></span>
       </header>
+      
+      <ul>
+        <li><%= link "preview hours", to: page_path(@conn, :index) %></li>
+        <%= if logged_in?(@conn) do %>
+          <li><%= link "edit hours of operation", to: truck_path(@conn, :edit) %></li>
+          <li><%= link "change login info", to: registration_path(@conn, :new) %></li>
+          <li><%= link "logout", to: session_path(@conn, :delete), method: :delete %></li>
+        <% end %>
+      </ul>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <div>
+        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      </div>
 
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>
 
-      <footer>
-        <%= if logged_in?(@conn) do %>
-          <li><%= current_user(@conn).email %></li>
-          <li><%= link "logout", to: session_path(@conn, :delete), method: :delete %></li>
-        <% else %>
-          <li><%= link "login", to: "/login" %></li>
-          <li><%= link "signup", to: registration_path(@conn, :new) %>
-        <% end %>
+      <hr/>
+
+      <footer class="pull-right">
+        <div class="jumbotron">
+          <h2><%= gettext "%{name}", name: "Münch- Hours of Operation" %></h2>
+          <p class="lead">Weekly updated hours of operation for your favorite Münch Food Park trucks.</p>
+        </div>
+        <p>Powered by <a href="https://www.ntcconsulting.info">NTC Consulting</a></p>
       </footer>
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>

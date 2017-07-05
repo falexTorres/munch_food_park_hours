@@ -1,8 +1,8 @@
-defmodule SignMeIn.Mixfile do
+defmodule MunchHours.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :sign_me_in,
+    [app: :munch_hours,
      version: "0.0.1",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -17,7 +17,7 @@ defmodule SignMeIn.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {SignMeIn, []},
+    [mod: {MunchHours, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
                     :phoenix_ecto, :postgrex]]
   end
@@ -38,7 +38,8 @@ defmodule SignMeIn.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:comeonin, "~> 1.0"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:timex, "~> 3.0"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

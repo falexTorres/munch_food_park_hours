@@ -1,3 +1,3 @@
-defmodule SignMeIn.LayoutViewTest do
-  use SignMeIn.ConnCase, async: true
+defmodule MunchHours.LayoutViewTest do
+  use MunchHours.ConnCase, async: true
 end

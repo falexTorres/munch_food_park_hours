@@ -1,3 +1,3 @@
-defmodule SignMeIn.LayoutView do
-  use SignMeIn.Web, :view
+defmodule MunchHours.LayoutView do
+  use MunchHours.Web, :view
 end

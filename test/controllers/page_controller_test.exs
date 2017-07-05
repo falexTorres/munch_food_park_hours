@@ -1,5 +1,5 @@
-defmodule SignMeIn.PageControllerTest do
-  use SignMeIn.ConnCase
+defmodule MunchHours.PageControllerTest do
+  use MunchHours.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"
